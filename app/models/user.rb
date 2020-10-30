@@ -16,5 +16,5 @@ class User < ApplicationRecord
   end
 
   validates :email, uniqueness: {case_sensitive: false}
-  validates :encrypted_password, format: {with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i}
+  validates :password, format: {with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i}
 end
