@@ -20,23 +20,23 @@
 
 ## items テーブル
 
-| Column        | Type        | Options                      |
-| ------------- | ----------- | ---------------------------- |                  
-| title         | string      | null: false                  |
-| detail        | text        | null: false                  |
-| category      | integer     | null: false                  |
-| condition     | integer     | null: false                  |
-| postage       | integer     | null: false                  |
-| prefecture    | integer     | null: false                  |
-| delivery_day  | integer     | null: false                  |
-| price         | integer     | null: false                  | 
-| user          | references  | null:false, foreign_key: true|
-| purchase      | references  | null:false, foreign_key: true|
+| Column           | Type        | Options                      |
+| -------------    | ----------- | ---------------------------- |                  
+| title            | string      | null: false                  |
+| detail           | text        | null: false                  |
+| category_id      | integer     | null: false                  |
+| condition_id     | integer     | null: false                  |
+| postage_id       | integer     | null: false                  |
+| prefecture_id    | integer     | null: false                  |
+| delivery_day_id  | integer     | null: false                  |
+| price            | integer     | null: false                  | 
+| user             | references  | null:false, foreign_key: true|
+
 
 **Association**
 
 * belongs_to :user
-* belongs_to :purchase
+* has_one :purchase
 * belongs_to_active_hash :prefecture
 * belongs_to_active_hash :category
 * belongs_to_active_hash :condition
