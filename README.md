@@ -74,7 +74,7 @@
 * belongs_to_active_hash :prefecture
 * belongs_to :purchase
 
-## prefectures テーブル
+<!-- ## prefectures テーブル
 
 | Column       | Type         | Options                        | 
 | --------     | ------------ | ------------------------------ |
@@ -103,6 +103,6 @@
 
 | Column       | Type         | Options                        | 
 | --------     | ------------ | ------------------------------ |
-| value         | string       | null: false                   |
+| value         | string       | null: false                   | -->
 
 
