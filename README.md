@@ -2,35 +2,21 @@
 
 ## users テーブル
 
-| Column    | Type         | Options                        | 
-| --------  | ------------ | ------------------------------ |
-| nickname  | string       | null: false                    |
-| email     | string       | null: false                    |
-| password  | string       | null: false                    |   
-| birth_date| date         | null: false                    |   
-| item      | references   | null: false, foreign_key: true | 
-| purchase  | references   | null: false, foreign_key: true | 
-| private   | references   | null: false, foreign_key: true |  
+| Column            | Type         | Options                        | 
+| --------          | ------------ | ------------------------------ |
+| nickname          | string       | null: false                    |
+| email             | string       | null: false                    |
+| encrypted_password| string       | null: false                    |   
+| birth_date  　　　 | date         | null: false                    |   
+| first_name        | string       | null: false                    |
+| last_name         | string       | null: false                    |
+| first_name_kana   | string       | null: false                    |      
+| last_name_kana    | string       | null: false                    |  
 
 **Association**
 
 * has_many :items
 * has_many :purchases
-* has_one :private
-
-## privatesテーブル
-
-| Column           | Type         | Options                        | 
-| --------         | ------------ | ------------------------------ |
-| first_name       | string       | null: false                    |
-| last_name        | string       | null: false                    |
-| first_name_kana  | string       | null: false                    |      
-| last_name_kana   | string       | null: false                    | 
-| user             | references   | null: false, foreign_key: true | 
-
-**Association**
-
-* belongs_to :user
 
 ## items テーブル
 
