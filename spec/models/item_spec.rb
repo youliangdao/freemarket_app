@@ -77,6 +77,11 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price is not a number')
       end
 
+      it 'imageが空では出品できない' do
+        @item.image = nil
+        expect(@item.image.attached?).to eq(false)
+      end
+
       it 'category_idが1なら保存できない' do
         @item.category_id = 1
         @item.valid?
