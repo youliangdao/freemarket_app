@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     render action: :new and return unless @item.valid?
+
     redirect_to root_path
   end
 
