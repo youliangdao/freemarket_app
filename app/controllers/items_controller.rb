@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   def index
-   @items = Item.all.order(id: "DESC")
+    @items = Item.all.order(id: 'DESC')
   end
 
   def new
@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(item_params)
     render action: :new and return unless @item.valid?
+
     redirect_to root_path
   end
 
