@@ -79,7 +79,8 @@ RSpec.describe Item, type: :model do
 
       it 'imageが空では出品できない' do
         @item.image = nil
-        expect(@item.image.attached?).to eq(false)
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
       end
 
       it 'category_idが1なら保存できない' do
