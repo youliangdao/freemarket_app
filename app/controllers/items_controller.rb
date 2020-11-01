@@ -9,11 +9,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.valid? && @item.image.attached?
-      redirect_to root_path
-    else
-      render action: :new
-    end
+    render action: :new and return unless @item.valid?
+    redirect_to root_path
   end
 
   private
