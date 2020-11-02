@@ -1,20 +1,21 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :city, :address, :apartment, :phone_number
+  attr_accessor :postal_code, :prefecture_id, :city, :address, :apartment, :phone_number, :item_id
 
   with_options presence: true do
-    validates :postal_code, format: {with: }
+    validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/}
     validates :city
-    validates :address, format: {with: /\A\d{3}[-]\d{4}\z/}
-    validates :phone_number, /\A\d{1,10}\z
+    validates :address
+    validates :phone_number, format: {with:  /\A\d{1,11}\z/}
   end
 
   validates :prefecture_id, numericality: {other_than: 0}
 
   def save
-    item = Item.find(params[:id])
+    item = Item.find(item_id)
     user = item.user
-    order = Order.create(user_id: user.id, item_id: item.id)
-    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, apartment: apartment, phone_number: phone_number, order_id: item.order_id)
+    order = Order.create(user_id: user.id, item_id: item_id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, apartment: apartment, phone_number: phone_number, order_id: order.id)
   end
+
 end
