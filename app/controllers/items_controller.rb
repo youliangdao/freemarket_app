@@ -22,11 +22,11 @@ class ItemsController < ApplicationController
 
   def edit
   end
-  
+
   def update
     @item.update(item_params)
-    render action: :edit and return unless @item.valid? 
-    
+    render action: :edit and return unless @item.valid?
+
     redirect_to item_path(@item)
   end
 
@@ -44,8 +44,6 @@ class ItemsController < ApplicationController
 
   def move_to_index
     set_item
-    unless current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path unless current_user.id == @item.user_id
   end
 end
