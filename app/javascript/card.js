@@ -12,6 +12,7 @@ function pay() {
       exp_year: `20${formData.get("order_address[exp_year]")}`,
       cvc: formData.get("order_address[cvc]"),
     }
+  
 
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
@@ -19,16 +20,15 @@ function pay() {
         const renderDom = document.getElementById("charge-form")
         const tokenObj = `<input value=${token} type="hidden" name='card_token'>`; 
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
-
+      };
         document.getElementById("card-number").removeAttribute("name");
         document.getElementById("card-exp-month").removeAttribute("name");
         document.getElementById("card-exp-year").removeAttribute("name");
         document.getElementById("card-cvc").removeAttribute("name");
-        debugger;
 
         document.getElementById("charge-form").submit();
         document.getElementById("charge-form").reset();
-      }
+      
     });
   });  
 };
