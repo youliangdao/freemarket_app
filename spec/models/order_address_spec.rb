@@ -4,6 +4,7 @@ RSpec.describe OrderAddress, type: :model do
   describe '注文情報の保存' do
     before do
       @order_address = FactoryBot.build(:order_address)
+      
     end
 
     it '全ての情報が正しく入力されていれば保存される' do
